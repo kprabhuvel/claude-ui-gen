@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Plus, LogOut, FolderOpen, ChevronDown } from "lucide-react";
 import { AuthDialog } from "@/components/auth/AuthDialog";
+import { FeedbackButton } from "@/components/FeedbackButton";
 import { signOut } from "@/actions";
 import { getProjects } from "@/actions/get-projects";
 import { createProject } from "@/actions/create-project";
@@ -95,7 +96,8 @@ export function HeaderActions({ user, projectId }: HeaderActionsProps) {
   if (!user) {
     return (
       <>
-        <div className="flex gap-2">
+        <div className="flex items-center gap-2">
+          <FeedbackButton />
           <Button variant="outline" className="h-8" onClick={handleSignInClick}>
             Sign In
           </Button>
@@ -154,6 +156,8 @@ export function HeaderActions({ user, projectId }: HeaderActionsProps) {
           </PopoverContent>
         </Popover>
       )}
+
+      <FeedbackButton />
 
       <Button className="flex items-center gap-2 h-8" onClick={handleNewDesign}>
         <Plus className="h-4 w-4" />
